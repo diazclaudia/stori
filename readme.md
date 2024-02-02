@@ -5,6 +5,21 @@
 This project is using the Hexagonal architecture, the distribution of the layers are like this:
 ![img.png](img/img.png)
 
+This is the tree structure of what we will be implementing:
+```
+.
+├── helpers                 obtaining database conection
+├── internal
+│   ├── repositories        secondary adapters            
+│   ├── core                must only depend on things defined in core
+│   │   ├── domain          my internal domain objects
+│   │   ├── ports
+│   │   └── usecases        
+│   └── handlers            primary adapters
+└── orm                     the externally defined project domain objects
+```
+
+
 ## Unit tests
 
 The project has their unit tests in the operations on layer usecases.
@@ -31,8 +46,8 @@ your docker should be created:
 curl --location 'http://localhost:8200/v1/transaction/send/email' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "to": "cx.diaz@uniandes.edu.co",
-    "from": "supercaya2000@hotmail.com",
+    "to": "the email tha will receive the summary",
+    "from": "your outlook email",
     "pass": "your email password"
 }'
 ```
